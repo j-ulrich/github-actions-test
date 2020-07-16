@@ -1,4 +1,4 @@
-const missingModule = require( 'a-module-which-does-not-exit' );
+const missingModule = require( 'node-fetch' );
 
 module.exports = ( ...args ) => {
 	console.log( args );

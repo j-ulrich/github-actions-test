@@ -35,4 +35,16 @@ jobs:
               with:
                 script: |
                     const path = require( 'path' );
-                    await require( path.resolve( './missing-dependency.js' ) )( github, core, context );
+                    await require( path.resolve( './script-with-dependency.js' ) )( github, core, context );
+
+    resolved-dependency:
+        name: Install dependency before running script
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: npm install --no-save node-fetch
+            - uses: actions/github-script@v2
+                with:
+                script: |
+                    const path = require( 'path' );
+                    await require( path.resolve( './script-with-dependency.js' ) )( github, core, context );
