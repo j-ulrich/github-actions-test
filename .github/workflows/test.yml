@@ -44,7 +44,7 @@ jobs:
             - uses: actions/checkout@v2
             - run: npm install --no-save node-fetch
             - uses: actions/github-script@v2
-                with:
+              with:
                 script: |
                     const path = require( 'path' );
                     await require( path.resolve( './script-with-dependency.js' ) )( github, core, context );
