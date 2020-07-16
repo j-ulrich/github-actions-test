@@ -1,0 +1,27 @@
+name: Test
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+    relative-require:
+        name: Relative require()
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/github-script@v2
+              with:
+                script: |
+                    await require( './simple.js' )( github, core, context );
+
+    missing-dependency:
+        name: Missing module dependency in script
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/github-script@v2
+              with:
+                script: |
+                    const path = require( 'path' );
+                    await require( path.resolve( './missing-dependency.js' ) )( github, core, context );
