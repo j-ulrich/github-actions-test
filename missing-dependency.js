@@ -1,5 +1,6 @@
-const missingModule = require( 'foo' );
+const missingModule = require( 'a-module-which-does-not-exit' );
 
-module.exports = () => {
-	console.log( this.arguments );
+module.exports = ( ...args ) => {
+	console.log( args );
+	console.log( missingModule );
 };

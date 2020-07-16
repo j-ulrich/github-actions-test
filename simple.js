@@ -1,4 +1,4 @@
 
-module.exports = () => {
-	console.log( this.arguments );
+module.exports = ( ...args ) => {
+	console.log( args );
 };

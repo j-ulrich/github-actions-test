@@ -5,6 +5,17 @@ on:
     workflow_dispatch:
 
 jobs:
+    positive-control:
+        name: Positive control
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - uses: actions/github-script@v2
+              with:
+                script: |
+                    const path = require( 'path' );
+                    await require( path.resolve( './simple.js' ) )( github, core, context );
+
     relative-require:
         name: Relative require()
         runs-on: ubuntu-latest
